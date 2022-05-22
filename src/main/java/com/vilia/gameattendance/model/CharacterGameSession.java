@@ -1,5 +1,7 @@
 package com.vilia.gameattendance.model;
 
+import java.time.OffsetDateTime;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -14,17 +16,28 @@ public class CharacterGameSession {
 	@ManyToOne
 	@JoinColumn(name = "character_id", referencedColumnName = "id")
 	private Character character;
-	
+
 	@Id
 	@ManyToOne
 	@JoinColumn(name = "game_session_id", referencedColumnName = "id")
 	private GameSession gameSession;
-	
+
 	@Column
 	private Boolean presential;
-	
+
 	@Column
 	private Boolean remote;
+
+	@Column
+	private OffsetDateTime timestamp;
+
+	public OffsetDateTime getTimestamp() {
+		return timestamp;
+	}
+
+	public void setTimestamp(OffsetDateTime timestamp) {
+		this.timestamp = timestamp;
+	}
 
 	public Character getCharacter() {
 		return character;
@@ -57,6 +70,5 @@ public class CharacterGameSession {
 	public void setRemote(Boolean remote) {
 		this.remote = remote;
 	}
-	
-	
+
 }

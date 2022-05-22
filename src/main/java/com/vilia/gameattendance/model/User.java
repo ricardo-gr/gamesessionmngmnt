@@ -1,5 +1,6 @@
 package com.vilia.gameattendance.model;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -14,6 +15,16 @@ public class User {
 	private long id;
 	@ManyToOne(fetch = FetchType.EAGER)
 	private UserRole role;
+	@Column
+	private boolean active;
+
+	public boolean isActive() {
+		return active;
+	}
+
+	public void setActive(boolean active) {
+		this.active = active;
+	}
 
 	public long getId() {
 		return id;

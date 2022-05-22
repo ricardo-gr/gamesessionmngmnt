@@ -11,8 +11,10 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.persistence.Table;
 
 @Entity
+@Table(name = "playercharacter")
 public class Character {
 
 	@Id
@@ -24,8 +26,19 @@ public class Character {
 	private String name;
 	@Column
 	private byte[] image;
+	@Column
+	private boolean active;
+
 	@OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 	private List<CharacterGameSession> gameSessions;
+
+	public boolean isActive() {
+		return active;
+	}
+
+	public void setActive(boolean active) {
+		this.active = active;
+	}
 
 	public long getId() {
 		return id;
