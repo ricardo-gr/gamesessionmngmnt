@@ -1,9 +1,11 @@
-package com.vilia.gameattendance.model;
+package com.vilia.gameattendance.gamesession;
 
 import java.time.LocalDate;
 import java.time.OffsetTime;
 import java.util.ArrayList;
 import java.util.List;
+
+import com.vilia.gameattendance.users.User;
 
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;

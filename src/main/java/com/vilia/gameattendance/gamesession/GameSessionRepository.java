@@ -1,11 +1,9 @@
-package com.vilia.gameattendance.repositories;
+package com.vilia.gameattendance.gamesession;
 
 import java.time.LocalDate;
 import java.util.List;
 
 import org.springframework.data.repository.CrudRepository;
-
-import com.vilia.gameattendance.model.GameSession;
 
 public interface GameSessionRepository extends CrudRepository<GameSession, Long> {
 	

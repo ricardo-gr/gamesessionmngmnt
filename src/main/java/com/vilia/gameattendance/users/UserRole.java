@@ -1,4 +1,4 @@
-package com.vilia.gameattendance.model;
+package com.vilia.gameattendance.users;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -12,7 +12,7 @@ public class UserRole {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private long id;
-	@Column
+	@Column(unique = true)
 	private String roleName;
 
 	public long getId() {

@@ -1,11 +1,8 @@
-package com.vilia.gameattendance.repositories;
+package com.vilia.gameattendance.gamesession;
 
 import java.util.List;
 
 import org.springframework.data.repository.CrudRepository;
-
-import com.vilia.gameattendance.model.CharacterGameSession;
-import com.vilia.gameattendance.model.CharacterGameSessionId;
 
 public interface CharacterGameSessionRepository extends CrudRepository<CharacterGameSession, CharacterGameSessionId> {
 	

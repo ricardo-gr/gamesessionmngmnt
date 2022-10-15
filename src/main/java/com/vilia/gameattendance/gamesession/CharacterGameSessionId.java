@@ -1,4 +1,4 @@
-package com.vilia.gameattendance.model;
+package com.vilia.gameattendance.gamesession;
 
 import java.io.Serializable;
 import java.util.Objects;

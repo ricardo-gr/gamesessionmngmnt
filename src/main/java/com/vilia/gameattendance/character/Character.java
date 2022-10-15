@@ -1,6 +1,9 @@
-package com.vilia.gameattendance.model;
+package com.vilia.gameattendance.character;
 
 import java.util.List;
+
+import com.vilia.gameattendance.gamesession.CharacterGameSession;
+import com.vilia.gameattendance.users.User;
 
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;

@@ -1,6 +1,8 @@
-package com.vilia.gameattendance.model;
+package com.vilia.gameattendance.gamesession;
 
 import java.time.OffsetDateTime;
+
+import com.vilia.gameattendance.character.Character;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
