@@ -2,9 +2,11 @@ package com.vilia.gameattendance.gamesession;
 
 import java.util.List;
 
-import org.springframework.data.repository.CrudRepository;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
 
-public interface CharacterGameSessionRepository extends CrudRepository<CharacterGameSession, CharacterGameSessionId> {
+@Repository
+public interface CharacterGameSessionRepository extends JpaRepository<CharacterGameSession, CharacterGameSessionId> {
 	
 	List<CharacterGameSession> findByGameSessionId(Long id);
 

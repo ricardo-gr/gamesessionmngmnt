@@ -2,9 +2,11 @@ package com.vilia.gameattendance.users;
 
 import java.util.Optional;
 
-import org.springframework.data.repository.CrudRepository;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
 
-public interface UserRoleRepository extends CrudRepository<UserRole, Long> {
+@Repository
+public interface UserRoleRepository extends JpaRepository<UserRole, Long> {
 
 	public Optional<UserRole> findByRoleName(String roleName);
 }

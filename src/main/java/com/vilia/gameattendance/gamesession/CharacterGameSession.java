@@ -6,6 +6,7 @@ import com.vilia.gameattendance.character.Character;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.Id;
 import jakarta.persistence.IdClass;
 import jakarta.persistence.JoinColumn;
@@ -15,19 +16,19 @@ import jakarta.persistence.ManyToOne;
 @IdClass(CharacterGameSessionId.class)
 public class CharacterGameSession {
 	@Id
-	@ManyToOne
+	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "character_id", referencedColumnName = "id")
 	private Character character;
 
 	@Id
-	@ManyToOne
+	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "game_session_id", referencedColumnName = "id")
 	private GameSession gameSession;
 
-	@Column
+	@Column(nullable = false)
 	private Boolean presential;
 
-	@Column
+	@Column(nullable = false)
 	private Boolean remote;
 
 	@Column

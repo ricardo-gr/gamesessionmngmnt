@@ -10,7 +10,7 @@ import jakarta.persistence.Id;
 public class UserRole {
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long id;
 	@Column(unique = true)
 	private String roleName;

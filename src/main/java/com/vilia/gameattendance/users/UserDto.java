@@ -1,6 +1,12 @@
 package com.vilia.gameattendance.users;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
+import java.security.NoSuchAlgorithmException;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.vilia.gameattendance.utils.PasswordUtil;
 
 import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotNull;
@@ -13,8 +19,12 @@ public class UserDto {
 	@NotNull
 	private String username; 
 	private String fullName;
-	@JsonIgnore
+	@JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
 	private String password;
+	
+	private static final Logger logger = LoggerFactory.getLogger(UserDto.class);
+	
+	public UserDto() {}
 	
 	public UserDto(User baseUser) {
 		super();
@@ -35,6 +45,17 @@ public class UserDto {
 		this.fullName = fullName;
 		this.password = password;
 	}
+	
+	public UserDto(String roleName, Boolean active, String username, String fullName, String password) {
+		super();
+		this.userId = null;
+		this.roleName = roleName;
+		this.active = active;
+		this.username = username;
+		this.fullName = fullName;
+		this.password = password;
+	}
+	
 	public Long getUserId() {
 		return userId;
 	}
@@ -58,6 +79,17 @@ public class UserDto {
 	public String toString() {
 		return "UserDto [userId=" + userId + ", roleName=" + roleName + ", active=" + active + ", username=" + username
 				+ ", fullName=" + fullName + ", password=********]";
+	}
+	
+	public void updateUser(User user) {
+		user.setActive(this.active);
+		user.setFullName(this.fullName);
+	}
+	
+	public void updateUser(User user, UserRole role, String hashedPassword) {
+		this.updateUser(user);
+		user.setRole(role);
+		user.setPassword(hashedPassword);
 	}
 	
 	
