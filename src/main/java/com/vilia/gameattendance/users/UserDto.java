@@ -1,12 +1,9 @@
 package com.vilia.gameattendance.users;
 
-import java.security.NoSuchAlgorithmException;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.vilia.gameattendance.utils.PasswordUtil;
 
 import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotNull;
