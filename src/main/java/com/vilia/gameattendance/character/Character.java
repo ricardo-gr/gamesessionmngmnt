@@ -25,7 +25,7 @@ public class Character {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private long id;
+	private Long id;
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "user_id")
 	private User user;
@@ -34,24 +34,35 @@ public class Character {
 	@Lob
 	private byte[] image; //I might want to change this to a String reference to the location of an image in the future
 	@Column(nullable = false)
-	private boolean active;
+	private Boolean active;
 
 	@OneToMany(mappedBy = "character", fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = true)
 	private List<CharacterGameSession> gameSessions = new ArrayList<>();
+	
+	public Character() {}
 
-	public boolean isActive() {
+	public Character(CharacterDto character, User owningUser) {
+		super();
+		this.id = character.getCharacterId();
+		this.user = owningUser;
+		this.name = character.getCharacterName();
+		this.image = character.getImage();
+		this.active = character.isActive();
+	}
+
+	public Boolean isActive() {
 		return active;
 	}
 
-	public void setActive(boolean active) {
+	public void setActive(Boolean active) {
 		this.active = active;
 	}
 
-	public long getId() {
+	public Long getId() {
 		return id;
 	}
 
-	public void setId(long id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 
@@ -85,6 +96,13 @@ public class Character {
 
 	public void setGameSessions(List<CharacterGameSession> gameSessions) {
 		this.gameSessions = gameSessions;
+	}
+
+	public void update(CharacterDto character, User newOwner) {
+		this.name = character.getCharacterName();
+		this.image = character.getImage();
+		this.user = newOwner;
+		this.active = character.isActive();
 	}
 
 }
