@@ -28,11 +28,11 @@ public class Character {
 	private Long id;
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "user_id")
-	private User user;
+	private User ownerUser;
 	@Column(nullable = false)
 	private String name;
 	@Lob
-	private byte[] image; //I might want to change this to a String reference to the location of an image in the future
+	private byte[] portrait; //I might want to change this to a String reference to the location of an image in the future
 	@Column(nullable = false)
 	private Boolean active;
 
@@ -44,9 +44,9 @@ public class Character {
 	public Character(CharacterDto character, User owningUser) {
 		super();
 		this.id = character.getCharacterId();
-		this.user = owningUser;
+		this.ownerUser = owningUser;
 		this.name = character.getCharacterName();
-		this.image = character.getImage();
+		this.portrait = character.getPortrait();
 		this.active = character.isActive();
 	}
 
@@ -67,11 +67,11 @@ public class Character {
 	}
 
 	public User getUser() {
-		return user;
+		return ownerUser;
 	}
 
-	public void setUser(User user) {
-		this.user = user;
+	public void setOwner(User owner) {
+		this.ownerUser = owner;
 	}
 
 	public String getName() {
@@ -82,12 +82,12 @@ public class Character {
 		this.name = name;
 	}
 
-	public byte[] getImage() {
-		return image;
+	public byte[] getPortrait() {
+		return portrait;
 	}
 
-	public void setImage(byte[] image) {
-		this.image = image;
+	public void setPortrait(byte[] image) {
+		this.portrait = image;
 	}
 
 	public List<CharacterGameSession> getGameSessions() {
@@ -100,8 +100,8 @@ public class Character {
 
 	public void update(CharacterDto character, User newOwner) {
 		this.name = character.getCharacterName();
-		this.image = character.getImage();
-		this.user = newOwner;
+		this.portrait = character.getPortrait();
+		this.ownerUser = newOwner;
 		this.active = character.isActive();
 	}
 

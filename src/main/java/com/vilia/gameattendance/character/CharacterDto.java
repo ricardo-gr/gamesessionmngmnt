@@ -11,8 +11,8 @@ public class CharacterDto {
 	private Long characterId;
 	@NotNull
 	private String characterName;
-	private String characterOwner;
-	private byte[] image;
+	private String characterOwnerUsername;
+	private byte[] portrait;
 	@NotNull
 	private boolean active;
 	
@@ -22,17 +22,17 @@ public class CharacterDto {
 		super();
 		this.characterId = character.getId();
 		this.characterName = character.getName();
-		this.characterOwner = character.getUser().getUsername();
-		this.image = character.getImage();
+		this.characterOwnerUsername = character.getUser().getUsername();
+		this.portrait = character.getPortrait();
 		this.active = character.isActive();
 	}
 
 	public String getCharacterOwner() {
-		return characterOwner;
+		return characterOwnerUsername;
 	}
 
 	public void setCharacterOwner(String characterOwner) {
-		this.characterOwner = characterOwner;
+		this.characterOwnerUsername = characterOwner;
 	}
 
 	public Long getCharacterId() {
@@ -51,12 +51,12 @@ public class CharacterDto {
 		this.characterName = characterName;
 	}
 
-	public byte[] getImage() {
-		return image;
+	public byte[] getPortrait() {
+		return portrait;
 	}
 
-	public void setImage(byte[] image) {
-		this.image = image;
+	public void setPortrait(byte[] image) {
+		this.portrait = image;
 	}
 
 	public boolean isActive() {
@@ -70,7 +70,7 @@ public class CharacterDto {
 	@Override
 	public String toString() {
 		return "CharacterDto [characterId=" + characterId + ", characterName=" + characterName + ", characterOwner="
-				+ characterOwner + ", image=" + Arrays.toString(image) + ", active=" + active + "]";
+				+ characterOwnerUsername + ", image=" + Arrays.toString(portrait) + ", active=" + active + "]";
 	}
 
 	
